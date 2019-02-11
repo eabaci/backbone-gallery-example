@@ -205,29 +205,29 @@ eval("module.exports = function(module) {\r\n\tif (!module.webpackPolyfill) {\r\
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ \"./node_modules/bootstrap/dist/css/bootstrap.min.css\");\n/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_0__);\n\nvar Backbone = __webpack_require__(/*! backbone */ \"./node_modules/backbone/backbone.js\");\nvar _ = __webpack_require__(/*! underscore */ \"./node_modules/underscore/underscore.js\");\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\nvar StartView = __webpack_require__(/*! ./views/start-view */ \"./src/js/views/start-view.js\");\nvar Notes = __webpack_require__(/*! ./collections/notes */ \"./src/js/collections/notes.js\");\nvar NotesView = __webpack_require__(/*! ./views/notes-view */ \"./src/js/views/notes-view.js\");\nvar NavView = __webpack_require__(/*! ./views/nav-view */ \"./src/js/views/nav-view.js\");\nvar Router = __webpack_require__(/*! ./routers/router */ \"./src/js/routers/router.js\");\n\nBackbone.$(function() {\n  var notes = new Notes();\n\n  var notesView = new NotesView({ model: notes });\n  notesView.render();\n\n  var router = new Router({ model: notes, notesView: notesView });\n  Backbone.history.start();\n\n  var startView = new StartView({ model: notes });\n  startView.render();\n\n  var navView = new NavView({ router: router });\n  navView.render();\n});\n\n\n//# sourceURL=webpack:///./src/js/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ \"./node_modules/bootstrap/dist/css/bootstrap.min.css\");\n/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_0__);\n\nvar Backbone = __webpack_require__(/*! backbone */ \"./node_modules/backbone/backbone.js\");\nvar _ = __webpack_require__(/*! underscore */ \"./node_modules/underscore/underscore.js\");\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\nvar Photos = __webpack_require__(/*! ./collections/photos */ \"./src/js/collections/photos.js\");\nvar Router = __webpack_require__(/*! ./routers/router */ \"./src/js/routers/router.js\");\nvar ListView = __webpack_require__(/*! ./views/list-view */ \"./src/js/views/list-view.js\");\nvar NavView = __webpack_require__(/*! ./views/nav-view */ \"./src/js/views/nav-view.js\");\n\nBackbone.$(function() {\n  var photos = new Photos();\n  photos.fetch({\n    success: function() {\n      var router = new Router({ model: photos });\n      Backbone.history.start();\n      var navView = new NavView({ router: router });\n      navView.render();\n      var listView = new ListView({ model: photos, router: router });\n      listView.render();\n    }\n  });\n});\n\n\n//# sourceURL=webpack:///./src/js/app.js?");
 
 /***/ }),
 
-/***/ "./src/js/collections/notes.js":
-/*!*************************************!*\
-  !*** ./src/js/collections/notes.js ***!
-  \*************************************/
+/***/ "./src/js/collections/photos.js":
+/*!**************************************!*\
+  !*** ./src/js/collections/photos.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var Backbone = __webpack_require__(/*! backbone */ \"./node_modules/backbone/backbone.js\");\nvar _ = __webpack_require__(/*! underscore */ \"./node_modules/underscore/underscore.js\");\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\nvar Note = __webpack_require__(/*! ../models/note */ \"./src/js/models/note.js\");\n\nvar Notes = Backbone.Collection.extend({\n  model: Note,\n  url: 'api/notes'\n});\n\nmodule.exports = Notes;\n\n\n//# sourceURL=webpack:///./src/js/collections/notes.js?");
+eval("var Backbone = __webpack_require__(/*! backbone */ \"./node_modules/backbone/backbone.js\");\nvar _ = __webpack_require__(/*! underscore */ \"./node_modules/underscore/underscore.js\");\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\nvar Photo = __webpack_require__(/*! ../models/photo */ \"./src/js/models/photo.js\");\n\nvar Photos = Backbone.Collection.extend({\n  model: Photo,\n  url: 'https://jsonplaceholder.typicode.com/photos'\n});\n\nmodule.exports = Photos;\n\n\n//# sourceURL=webpack:///./src/js/collections/photos.js?");
 
 /***/ }),
 
-/***/ "./src/js/models/note.js":
-/*!*******************************!*\
-  !*** ./src/js/models/note.js ***!
-  \*******************************/
+/***/ "./src/js/models/photo.js":
+/*!********************************!*\
+  !*** ./src/js/models/photo.js ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var Backbone = __webpack_require__(/*! backbone */ \"./node_modules/backbone/backbone.js\");\nvar _ = __webpack_require__(/*! underscore */ \"./node_modules/underscore/underscore.js\");\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n\nvar Note = Backbone.Model.extend({\n  urlRoot: 'app/songs',\n  defaults: {\n    title: 'Title',\n    id: 0,\n    active: false\n  }\n});\n\nmodule.exports = Note;\n\n\n//# sourceURL=webpack:///./src/js/models/note.js?");
+eval("var Backbone = __webpack_require__(/*! backbone */ \"./node_modules/backbone/backbone.js\");\nvar _ = __webpack_require__(/*! underscore */ \"./node_modules/underscore/underscore.js\");\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n\nvar Photo = Backbone.Model.extend({\n  urlRoot: 'https://jsonplaceholder.typicode.com/photos',\n  defaults: { title: 'Title', id: 0, url: 'false' }\n});\n\nmodule.exports = Photo;\n\n\n//# sourceURL=webpack:///./src/js/models/photo.js?");
 
 /***/ }),
 
@@ -238,7 +238,51 @@ eval("var Backbone = __webpack_require__(/*! backbone */ \"./node_modules/backbo
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var Backbone = __webpack_require__(/*! backbone */ \"./node_modules/backbone/backbone.js\");\nvar _ = __webpack_require__(/*! underscore */ \"./node_modules/underscore/underscore.js\");\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\nvar Notes = __webpack_require__(/*! ../collections/notes */ \"./src/js/collections/notes.js\");\n\nvar Router = Backbone.Router.extend({\n  routes: {\n    all: 'allNotes',\n    active: 'activeNotes',\n    completed: 'completedNotes'\n  },\n\n  initialize: function(ops) {\n    this.model = ops.model;\n    this.notesView = ops.notesView;\n  },\n\n  allNotes: function() {\n    this.notesView.update(this.model);\n  },\n  activeNotes: function() {\n    var notes = this.model.filter(noteModel => noteModel.get('active'));\n    this.notesView.update(new Notes(notes));\n  },\n  completedNotes: function() {\n    var notes = this.model.filter(noteModel => !noteModel.get('active'));\n    this.notesView.update(new Notes(notes));\n  }\n});\n\nmodule.exports = Router;\n\n\n//# sourceURL=webpack:///./src/js/routers/router.js?");
+eval("var Backbone = __webpack_require__(/*! backbone */ \"./node_modules/backbone/backbone.js\");\nvar _ = __webpack_require__(/*! underscore */ \"./node_modules/underscore/underscore.js\");\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\nvar DetailsView = __webpack_require__(/*! ../views/details-view */ \"./src/js/views/details-view.js\");\nvar ListView = __webpack_require__(/*! ../views/list-view */ \"./src/js/views/list-view.js\");\nvar EditView = __webpack_require__(/*! ../views/edit-view */ \"./src/js/views/edit-view.js\");\n\nvar Router = Backbone.Router.extend({\n  routes: {\n    list: 'loadListView',\n    'detail/:id': 'loadDetailView',\n    'edit/:id': 'loadEditView'\n  },\n\n  initialize: function(ops) {\n    if (!(ops && ops.model))\n      throw new Error('The model needs to be set to this View');\n    this.model = ops.model;\n  },\n  loadListView: function() {\n    var listView = new ListView({ model: this.model, router: this });\n    listView.render();\n  },\n  loadDetailView: function(id) {\n    var detailsModel = this.model.get(id);\n    var detailsView = new DetailsView({ model: detailsModel });\n    detailsView.render();\n  },\n  loadEditView: function(id) {\n    var editModel = this.model.get(id);\n    var editView = new EditView({ model: editModel });\n    editView.render();\n  }\n});\n\nmodule.exports = Router;\n\n\n//# sourceURL=webpack:///./src/js/routers/router.js?");
+
+/***/ }),
+
+/***/ "./src/js/views/details-view.js":
+/*!**************************************!*\
+  !*** ./src/js/views/details-view.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var Backbone = __webpack_require__(/*! backbone */ \"./node_modules/backbone/backbone.js\");\nvar _ = __webpack_require__(/*! underscore */ \"./node_modules/underscore/underscore.js\");\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n\nvar DetailsView = Backbone.View.extend({\n  el: '#body',\n\n  initialize: function() {\n    this.template = _.template($('#detailViewTemplate').html());\n    this.html = this.template(this.model.toJSON());\n  },\n  render: function() {\n    this.$el.html(this.html);\n    return this;\n  }\n});\n\nmodule.exports = DetailsView;\n\n\n//# sourceURL=webpack:///./src/js/views/details-view.js?");
+
+/***/ }),
+
+/***/ "./src/js/views/edit-view.js":
+/*!***********************************!*\
+  !*** ./src/js/views/edit-view.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var Backbone = __webpack_require__(/*! backbone */ \"./node_modules/backbone/backbone.js\");\nvar _ = __webpack_require__(/*! underscore */ \"./node_modules/underscore/underscore.js\");\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n\nvar EditView = Backbone.View.extend({\n  el: '#body',\n\n  render: function() {\n    this.$el.html('<p>edit view</p>');\n    return this;\n  }\n});\n\nmodule.exports = EditView;\n\n\n//# sourceURL=webpack:///./src/js/views/edit-view.js?");
+
+/***/ }),
+
+/***/ "./src/js/views/list-item-view.js":
+/*!****************************************!*\
+  !*** ./src/js/views/list-item-view.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var Backbone = __webpack_require__(/*! backbone */ \"./node_modules/backbone/backbone.js\");\nvar _ = __webpack_require__(/*! underscore */ \"./node_modules/underscore/underscore.js\");\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n\nvar ListItemView = Backbone.View.extend({\n  events: {\n    click: 'onClick'\n  },\n  initialize: function(ops) {\n    if (!(ops && ops.model))\n      throw new Error('The model needs to be set to this View');\n\n    this.router = ops.router;\n\n    this.template = _.template($('#listItemViewTemplate').html());\n    this.html = this.template(this.model.toJSON());\n  },\n\n  render: function() {\n    this.$el.html(this.html);\n    return this;\n  },\n  onClick: function(e) {\n    var url = 'detail/' + this.model.get('id');\n    this.router.navigate(url, { trigger: true });\n  }\n});\n\nmodule.exports = ListItemView;\n\n\n//# sourceURL=webpack:///./src/js/views/list-item-view.js?");
+
+/***/ }),
+
+/***/ "./src/js/views/list-view.js":
+/*!***********************************!*\
+  !*** ./src/js/views/list-view.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var Backbone = __webpack_require__(/*! backbone */ \"./node_modules/backbone/backbone.js\");\nvar _ = __webpack_require__(/*! underscore */ \"./node_modules/underscore/underscore.js\");\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\nvar ListItemView = __webpack_require__(/*! ./list-item-view */ \"./src/js/views/list-item-view.js\");\n\nvar ListView = Backbone.View.extend({\n  el: '#body',\n\n  initialize: function(ops) {\n    if (!(ops && ops.model))\n      throw new Error('The model needs to be set to this View');\n\n    this.router = ops.router;\n  },\n\n  render: function() {\n    var self = this;\n    self.$el.empty();\n    this.model.each(function(modelItem) {\n      var listItemView = new ListItemView({\n        model: modelItem,\n        router: self.router\n      });\n      self.$el.append(listItemView.render().$el);\n    });\n\n    return this;\n  }\n});\n\nmodule.exports = ListView;\n\n\n//# sourceURL=webpack:///./src/js/views/list-view.js?");
 
 /***/ }),
 
@@ -249,40 +293,7 @@ eval("var Backbone = __webpack_require__(/*! backbone */ \"./node_modules/backbo
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var Backbone = __webpack_require__(/*! backbone */ \"./node_modules/backbone/backbone.js\");\nvar _ = __webpack_require__(/*! underscore */ \"./node_modules/underscore/underscore.js\");\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n\nvar NavView = Backbone.View.extend({\n  el: '#navView',\n  events: {\n    'click .nav-item': 'navView'\n  },\n  initialize: function(ops) {\n    this.router = ops.router;\n    this.template = _.template($('#navViewTemplate').html());\n    this.html = this.template();\n  },\n  render: function() {\n    this.$el.html(this.html);\n    return this;\n  },\n  navView: function(e) {\n    var url = $(e.target).attr('data-url');\n    this.router.navigate(url, { trigger: true });\n  }\n});\n\nmodule.exports = NavView;\n\n\n//# sourceURL=webpack:///./src/js/views/nav-view.js?");
-
-/***/ }),
-
-/***/ "./src/js/views/note-view.js":
-/*!***********************************!*\
-  !*** ./src/js/views/note-view.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var Backbone = __webpack_require__(/*! backbone */ \"./node_modules/backbone/backbone.js\");\nvar _ = __webpack_require__(/*! underscore */ \"./node_modules/underscore/underscore.js\");\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n\nvar NoteView = Backbone.View.extend({\n  className: 'noteview',\n\n  events: {\n    click: 'toggleNote'\n  },\n\n  toggleNote: function() {\n    if (!this.model.get('active')) {\n      this.model.set('active', true);\n      this.$el.addClass('active');\n    } else {\n      this.model.set('active', false);\n      this.$el.removeClass('active');\n    }\n  },\n\n  initialize: function(ops) {\n    this.template = _.template($('#noteViewTemplate').html());\n    this.html = this.template(this.model.toJSON());\n  },\n  render: function() {\n    this.$el.html(this.html);\n    if (this.model.get('active')) this.$el.addClass('active');\n\n    return this;\n  }\n});\n\nmodule.exports = NoteView;\n\n\n//# sourceURL=webpack:///./src/js/views/note-view.js?");
-
-/***/ }),
-
-/***/ "./src/js/views/notes-view.js":
-/*!************************************!*\
-  !*** ./src/js/views/notes-view.js ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var Backbone = __webpack_require__(/*! backbone */ \"./node_modules/backbone/backbone.js\");\nvar _ = __webpack_require__(/*! underscore */ \"./node_modules/underscore/underscore.js\");\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\nvar NoteView = __webpack_require__(/*! ./note-view */ \"./src/js/views/note-view.js\");\n\nvar NotesView = Backbone.View.extend({\n  el: '#notesView',\n\n  initialize: function(ops) {\n    this.model = ops.model;\n    this.model.on('add', this.addNote, this);\n  },\n\n  addNote: function(noteModel) {\n    var noteView = new NoteView({ model: noteModel });\n    this.$el.append(noteView.render().$el);\n  },\n\n  update(model) {\n    this.model = model;\n    this.render();\n  },\n\n  render: function() {\n    var self = this;\n    self.$el.empty();\n    self.model.each(function(noteModel) {\n      var noteView = new NoteView({ model: noteModel });\n      self.$el.append(noteView.render().$el);\n    });\n    return self;\n  }\n});\n\nmodule.exports = NotesView;\n\n\n//# sourceURL=webpack:///./src/js/views/notes-view.js?");
-
-/***/ }),
-
-/***/ "./src/js/views/start-view.js":
-/*!************************************!*\
-  !*** ./src/js/views/start-view.js ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var Backbone = __webpack_require__(/*! backbone */ \"./node_modules/backbone/backbone.js\");\nvar _ = __webpack_require__(/*! underscore */ \"./node_modules/underscore/underscore.js\");\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\nvar Note = __webpack_require__(/*! ../models/note */ \"./src/js/models/note.js\");\n\nvar StartView = Backbone.View.extend({\n  el: '#startView',\n  events: {\n    'click button': 'addTodo'\n  },\n  initialize: function(ops) {\n    this.template = _.template($('#startViewTemplate').html());\n    this.html = this.template();\n    this.counter = 0;\n  },\n  render: function() {\n    this.$el.html(this.html);\n    return this;\n  },\n  addTodo: function() {\n    var title = this.$el.find('input').val();\n    this.$el.find('input').val('');\n    this.model.add(new Note({ title: title, id: this.counter, active: false }));\n    this.counter++;\n  }\n});\n\nmodule.exports = StartView;\n\n\n//# sourceURL=webpack:///./src/js/views/start-view.js?");
+eval("var Backbone = __webpack_require__(/*! backbone */ \"./node_modules/backbone/backbone.js\");\nvar _ = __webpack_require__(/*! underscore */ \"./node_modules/underscore/underscore.js\");\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n\nvar NavView = Backbone.View.extend({\n  el: '#nav',\n\n  events: {\n    'click li': 'onClick'\n  },\n\n  initialize: function(ops) {\n    this.router = ops.router;\n\n    this.template = _.template($('#navViewTemplate').html());\n    this.html = this.template();\n  },\n\n  onClick: function(e) {\n    var url = $(e.target).attr('data-url');\n    this.router.navigate(url, { trigger: true });\n  },\n\n  render: function() {\n    this.$el.html(this.html);\n    return this;\n  }\n});\n\nmodule.exports = NavView;\n\n\n//# sourceURL=webpack:///./src/js/views/nav-view.js?");
 
 /***/ })
 
