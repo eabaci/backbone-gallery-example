@@ -1,6 +1,7 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
+var navViewTemplate = require('../templates/navViewTemplate.html');
 
 var NavView = Backbone.View.extend({
   el: '#nav',
@@ -9,11 +10,10 @@ var NavView = Backbone.View.extend({
     'click li': 'onClick'
   },
 
+  template: _.template(navViewTemplate),
+
   initialize: function(ops) {
     this.router = ops.router;
-
-    this.template = _.template($('#navViewTemplate').html());
-    this.html = this.template();
   },
 
   onClick: function(e) {
@@ -22,7 +22,7 @@ var NavView = Backbone.View.extend({
   },
 
   render: function() {
-    this.$el.html(this.html);
+    this.$el.html(this.template());
     return this;
   }
 });

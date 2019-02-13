@@ -19,25 +19,5 @@
       <div id="nav"></div>
       <div id="body"></div>
     </div>
-    <script id="navViewTemplate" type="text/html">
-      <ul>
-        <li data-url="list">List</li>
-        <li data-url="edit/1">Edit</li>
-        <li data-url="detail/1">Detail</li>
-      </ul>
-    </script>
-    <script id="listItemViewTemplate" type="text/html">
-      <div id=<%- id %>>
-          <p><%- title %></p>
-          <img src="<%- thumbnailUrl %>" alt="<%- title %>" height="42" width="42"/>
-      </div>
-    </script>
-
-    <script id="detailViewTemplate" type="text/html">
-      <div id=<%- id %>>
-          <p><%- title %></p>
-          <img src="<%- thumbnailUrl %>" alt="<%- title %>" height="42" width="42"/>
-      </div>
-    </script>
   </body>
 </html>

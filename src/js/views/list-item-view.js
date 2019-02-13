@@ -1,23 +1,24 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
+var listItemViewTemplate = require('../templates/listItemViewTemplate.html');
 
 var ListItemView = Backbone.View.extend({
   events: {
     click: 'onClick'
   },
+
+  template: _.template(listItemViewTemplate),
+
   initialize: function(ops) {
     if (!(ops && ops.model))
       throw new Error('The model needs to be set to this View');
 
     this.router = ops.router;
-
-    this.template = _.template($('#listItemViewTemplate').html());
-    this.html = this.template(this.model.toJSON());
   },
 
   render: function() {
-    this.$el.html(this.html);
+    this.$el.html(this.template(this.model.toJSON()));
     return this;
   },
   onClick: function(e) {
