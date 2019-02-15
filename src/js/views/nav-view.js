@@ -7,7 +7,7 @@ var NavView = Backbone.View.extend({
   el: '#nav',
 
   events: {
-    'click li': 'onClick'
+    'click button': 'onClick'
   },
 
   template: _.template(navViewTemplate),

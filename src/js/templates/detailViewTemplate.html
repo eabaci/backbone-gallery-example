@@ -1,6 +1,11 @@
-<div id="<%- id %>" class="detailsView">
-  <p><%- title %></p>
-  <img src="<%- thumbnailUrl %>" alt="<%- title %>" height="42" width="42" />
-  <button class="edit">Edit</button>
-  <button class="delete">Delete</button>
+<div id="<%- id %>" class="detailsView card" style="width: 22rem;">
+  <img class="card-img-top" src="<%- thumbnailUrl %>" alt="<%- title %>" />
+  <div class="card-body">
+    <h5 class="card-title"><%- title %></h5>
+    <p class="card-text">
+      <%- title %>
+    </p>
+    <button class="edit btn btn-outline-primary">Edit</button>
+    <button class="delete btn btn-outline-primary">Delete</button>
+  </div>
 </div>

@@ -26,6 +26,16 @@ var EditView = Backbone.View.extend({
     this.render();
   },
   onSaveClick: function(e) {
+    let inputs = this.$el.find('input');
+    let self = this;
+    console.log(inputs);
+    $.each(inputs, function(index) {
+      console.log(inputs[index]);
+      let value = inputs[index].value;
+      let name = inputs[index].name;
+      if (value) self.model.set(name, value);
+    });
+
     var url = 'detail/' + this.model.get('id');
     this.router.navigate(url, { trigger: true });
   },
