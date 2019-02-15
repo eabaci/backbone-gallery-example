@@ -1,4 +1,8 @@
-<div id="<%- id %>">
-  <p><%- title %></p>
-  <img src="<%- thumbnailUrl %>" alt="<%- title %>" height="42" width="42" />
+<div id="<%- id %>" class="card" style="width: 18rem;">
+  <img class="card-img-top" src="<%- thumbnailUrl %>" alt="<%- title %>" />
+  <div class="card-body">
+    <p class="card-text">
+      <%- title %>
+    </p>
+  </div>
 </div>

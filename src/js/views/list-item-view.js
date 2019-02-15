@@ -4,6 +4,8 @@ var $ = require('jquery');
 var listItemViewTemplate = require('../templates/listItemViewTemplate.html');
 
 var ListItemView = Backbone.View.extend({
+  className: 'col-4',
+
   events: {
     click: 'onClick'
   },
@@ -23,6 +25,7 @@ var ListItemView = Backbone.View.extend({
   },
   onClick: function(e) {
     var url = 'detail/' + this.model.get('id');
+    console.log(url);
     this.router.navigate(url, { trigger: true });
   }
 });

@@ -15,16 +15,16 @@ Backbone.$(function() {
     success: function() {
       var detailsView = new DetailsView({ model: {}, router: {} });
       var editView = new EditView({ model: {}, router: {} });
+      var listView = new ListView({ model: {}, router: {} });
       var router = new Router({
         model: photos,
         detailsView: detailsView,
-        editView: editView
+        editView: editView,
+        listView: listView
       });
       Backbone.history.start();
       var navView = new NavView({ router: router });
       navView.render();
-      var listView = new ListView({ model: photos, router: router });
-      listView.render();
     }
   });
 });

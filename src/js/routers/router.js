@@ -2,12 +2,14 @@ var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
 var ListView = require('../views/list-view');
+var Photo = require('../models/photo');
 
 var Router = Backbone.Router.extend({
   routes: {
     list: 'loadListView',
     'detail/:id': 'loadDetailView',
-    'edit/:id': 'loadEditView'
+    'edit/:id': 'loadEditView',
+    add: 'loadAddView'
   },
 
   initialize: function(ops) {
@@ -16,10 +18,10 @@ var Router = Backbone.Router.extend({
     this.model = ops.model;
     this.detailsView = ops.detailsView;
     this.editView = ops.editView;
+    this.listView = ops.listView;
   },
   loadListView: function() {
-    var listView = new ListView({ model: this.model, router: this });
-    listView.render();
+    this.listView.update(this.model, this);
   },
   loadDetailView: function(id) {
     var detailsModel = this.model.get(id);
@@ -28,6 +30,12 @@ var Router = Backbone.Router.extend({
   loadEditView: function(id) {
     var editModel = this.model.get(id);
     this.editView.update(editModel, this);
+  },
+  loadAddView: function() {
+    let id = this.model.length + 1;
+    let newModel = new Photo({ id: id });
+    this.model.add(newModel);
+    this.editView.update(newModel, this);
   }
 });
 

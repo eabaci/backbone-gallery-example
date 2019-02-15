@@ -22,6 +22,7 @@ var DetailsView = Backbone.View.extend({
     this.router.navigate(url, { trigger: true });
   },
   onDeleteClick: function(e) {
+    this.model.destroy();
     var url = 'list';
     this.router.navigate(url, { trigger: true });
   },
